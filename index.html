@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bar POS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="container">
+
+  <!-- MENU -->
+  <div class="menu">
+    <div class="tabs">
+      <button onclick="setCategory('softs')">Softs</button>
+      <button onclick="setCategory('apero')">Apéro</button>
+      <button onclick="setCategory('bieres')">Bières</button>
+      <button onclick="setCategory('vins')">Vins</button>
+      <button onclick="setCategory('snacks')">Snacks</button>
+    </div>
+
+    <div id="items" class="items"></div>
+  </div>
+
+  <!-- PANIER -->
+  <div class="cart">
+    <h2>Panier</h2>
+    <div id="cart"></div>
+
+    <h3 id="total">Total: 0€</h3>
+
+    <button class="pay" onclick="pay()">Encaisser</button>
+    <button onclick="getStats()">Stats</button>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
