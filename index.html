@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Les Fourmis Bougent</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <h1>🍺 Les Fourmis Bougent</h1>
+
+  <!-- CATÉGORIES -->
+  <div class="categories">
+    <button onclick="setCategory('softs')">Softs</button>
+    <button onclick="setCategory('apero')">Apéro</button>
+    <button onclick="setCategory('bieres')">Bières</button>
+    <button onclick="setCategory('vins')">Vins</button>
+    <button onclick="setCategory('snacks')">Snacks</button>
+  </div>
+
+  <!-- PRODUITS -->
+  <div id="items"></div>
+
+  <!-- PANIER -->
+  <div class="cart">
+    <h3 id="total">Total: 0€</h3>
+    <div id="cart"></div>
+
+    <div style="display:flex;gap:10px;">
+      <button onclick="pay()" style="flex:1;">💰 Encaisser</button>
+      <button onclick="showStats()" style="flex:1;">📊 Stats</button>
+    </div>
+  </div>
+
+  <!-- ===== STATS ===== -->
+  <div id="statsBox" class="modal">
+
+    <div class="modal-content">
+
+      <!-- HEADER FIXE -->
+      <div style="
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 10;
+        padding-bottom: 10px;
+      ">
+        <button onclick="closeStats()">❌ Fermer</button>
+        <h2>Statistiques</h2>
+      </div>
+
+      <!-- CONTENU -->
+      <div id="statsContent" style="flex:1;"></div>
+
+      <!-- FOOTER FIXE -->
+      <div style="
+        position: sticky;
+        bottom: 0;
+        background: white;
+        padding-top: 10px;
+        margin-top: 10px;
+      ">
+        <button onclick="copyStats()">📋 Copier</button>
+        <button onclick="exportStats()">📤 Export</button>
+        <button onclick="resetStats()">🔄 Reset</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ===== PAIEMENT ===== -->
+  <div id="paymentBox" class="modal">
+    <div class="modal-content">
+
+      <h2>Choisir paiement</h2>
+
+      <button onclick="choosePayment('cash')" style="width:100%;padding:15px;margin-bottom:10px;">
+        💵 Liquide
+      </button>
+
+      <button onclick="choosePayment('card')" style="width:100%;padding:15px;">
+        💳 Carte
+      </button>
+
+      <br><br>
+
+      <button onclick="document.getElementById('paymentBox').style.display='none'">
+        ❌ Annuler
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ===== CASH ===== -->
+  <div id="cashBox" class="modal">
+    <div class="modal-content">
+
+      <h2>Montant reçu</h2>
+
+      <p>Total: <span id="amountDue"></span>€</p>
+
+      <input 
+        id="cashInput" 
+        type="number" 
+        placeholder="Montant reçu"
+        style="width:100%;padding:10px;font-size:18px;"
+      >
+
+      <br><br>
+
+      <button onclick="validateCash()" style="width:100%;padding:15px;">
+        ✅ Valider
+      </button>
+
+      <br><br>
+
+      <button onclick="document.getElementById('cashBox').style.display='none'">
+        ❌ Annuler
+      </button>
+
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="storage.js"></script>
+  <script src="stats.js"></script>
+  <script src="ticket.js"></script>
+  <script src="payment.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
